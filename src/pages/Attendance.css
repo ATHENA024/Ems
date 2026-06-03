@@ -1,0 +1,97 @@
+.att-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.att-summary-card {
+  text-align: center;
+  padding: 20px;
+}
+
+.att-summary-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.att-summary-label {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.att-mark-card {
+  margin-bottom: 20px;
+}
+
+.att-mark-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.att-mark-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.att-mark-row select {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f8fafc;
+  color: #0f1724;
+}
+
+.att-mark-row select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+  outline: none;
+}
+
+.att-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 4px;
+  width: fit-content;
+}
+
+.att-tab {
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  background: transparent;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.att-tab.active {
+  background: #fff;
+  color: #6366f1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.att-tab:hover:not(.active) {
+  color: #0f1724;
+}
+
+@media (max-width: 768px) {
+  .att-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .att-mark-row {
+    flex-direction: column;
+  }
+  .att-mark-row select {
+    width: 100%;
+  }
+}

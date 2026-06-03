@@ -1,0 +1,13 @@
+.dashboard-stats {
+  margin-bottom: 24px;
+}
+
+.dashboard-card-change {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.dashboard-card-change.positive {
+  color: var(--success);
+}

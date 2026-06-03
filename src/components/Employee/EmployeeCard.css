@@ -1,0 +1,51 @@
+.employee-card {
+  padding: 20px;
+}
+
+.employee-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.employee-card-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.employee-card-info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.employee-card-role {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.employee-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.employee-card-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.employee-card-detail .label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.employee-card-actions {
+  display: flex;
+  gap: 10px;
+}

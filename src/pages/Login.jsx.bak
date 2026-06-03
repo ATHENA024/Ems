@@ -1,0 +1,195 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import './Login.css';
+
+const roles = [
+  {
+    id: 'admin',
+    label: 'Admin',
+    icon: '🛡️',
+    desc: 'Manage employees, payroll, attendance, reports and system settings',
+    creds: { email: 'admin@ems.com', password: 'admin123' },
+    bg: 'linear-gradient(135deg, #eef2ff, #fff)',
+    border: '#c7d2fe',
+    accent: '#6366f1',
+    dotBg: '#eef2ff',
+  },
+  {
+    id: 'employee',
+    label: 'Employee',
+    icon: '👤',
+    desc: 'View profile, mark attendance, apply leaves, check payslips',
+    creds: { email: 'employee@ems.com', password: 'emp123' },
+    bg: 'linear-gradient(135deg, #e6f4ea, #fff)',
+    border: '#a8dab5',
+    accent: '#0f9d58',
+    dotBg: '#e6f4ea',
+  },
+];
+
+function Login() {
+  const [step, setStep] = useState('select');
+  const [selectedRole, setSelectedRole] = useState(null);
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { user, login } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate(user.role === 'admin' ? '/dashboard' : '/employee-dashboard', { replace: true });
+    }
+  }, [user, navigate]);
+
+  const handleRoleSelect = (role) => {
+    setSelectedRole(role);
+    setCredentials({ email: role.creds.email, password: role.creds.password });
+    setError('');
+    setStep('login');
+  };
+
+  const handleChange = (e) => {
+    setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (error) setError('');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+    setError('');
+    setLoading(true);
+    try {
+      await login(credentials.email, credentials.password);
+    } catch (err) {
+      setError(err.message || 'Login failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleBack = () => {
+    setStep('select');
+    setSelectedRole(null);
+    setError('');
+  };
+
+  if (step === 'select') {
+    return (
+      <div className="login-page">
+        <div className="login-bg-shape login-bg-shape-1"></div>
+        <div className="login-bg-shape login-bg-shape-2"></div>
+        <div className="login-card" style={{ maxWidth: 520 }}>
+          <div className="login-logo">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <rect width="56" height="56" rx="14" fill="#6366f1"/>
+              <rect width="56" height="56" rx="14" fill="url(#lg)" fillOpacity="0.2"/>
+              <path d="M16 40V22l12-9 12 9v18h-7v-12H23v12H16z" fill="#fff"/>
+              <rect x="22" y="28" width="12" height="12" rx="3" fill="#c7d2fe"/>
+              <defs>
+                <linearGradient id="lg" x1="0" y1="0" x2="56" y2="56">
+                  <stop stopColor="#fff"/>
+                  <stop offset="1" stopColor="#fff" stopOpacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div className="login-header">
+            <h1>Employee Management System</h1>
+            <p>Select your role to continue</p>
+          </div>
+          <div className="login-role-grid">
+            {roles.map((role) => (
+              <button
+                key={role.id}
+                className="login-role-card"
+                onClick={() => handleRoleSelect(role)}
+                style={{ background: role.bg, borderColor: role.border }}
+              >
+                <div className="login-role-icon" style={{ background: role.dotBg, color: role.accent }}>
+                  {role.icon}
+                </div>
+                <h3 className="login-role-label" style={{ color: role.accent }}>{role.label}</h3>
+                <p className="login-role-desc">{role.desc}</p>
+                <span className="login-role-btn" style={{ background: role.accent }}>Continue as {role.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="login-page">
+      <div className="login-bg-shape login-bg-shape-1"></div>
+      <div className="login-bg-shape login-bg-shape-2"></div>
+      <div className="login-card">
+        <button className="login-back" onClick={handleBack}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Back
+        </button>
+        <div className="login-logo">
+          <div className="login-logo-icon" style={{ background: selectedRole.accent }}>
+            {selectedRole.icon}
+          </div>
+        </div>
+        <div className="login-header">
+          <h1>Welcome {selectedRole.label}</h1>
+          <p>Sign in to your Employee Management System</p>
+        </div>
+        {error && (
+          <div className="login-error">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+            </svg>
+            {error}
+          </div>
+        )}
+        <form onSubmit={handleSubmit} noValidate>
+          <div className="form-group">
+            <label>Email Address</label>
+            <div className="input-wrapper">
+              <svg className="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <input name="email" type="email" value={credentials.email} onChange={handleChange} placeholder="email@company.com" required autoFocus />
+            </div>
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <div className="input-wrapper">
+              <svg className="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input name="password" type="password" value={credentials.password} onChange={handleChange} placeholder="Enter your password" required />
+            </div>
+          </div>
+          <button type="submit" className="login-btn" disabled={loading} style={{ background: `linear-gradient(135deg, ${selectedRole.accent}, ${selectedRole.accent}dd)` }}>
+            {loading ? (
+              <span className="login-btn-loading">
+                <span className="spinner"></span>
+                Signing in...
+              </span>
+            ) : (
+              <span className="login-btn-text">Sign In as {selectedRole.label}</span>
+            )}
+          </button>
+        </form>
+        <p className="login-hint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          Demo credentials pre-filled
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default Login;

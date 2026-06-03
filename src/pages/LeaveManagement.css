@@ -1,0 +1,282 @@
+.leave-page {}
+
+.leave-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.leave-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+.leave-summary-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.leave-summary-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.leave-summary-val {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f1724;
+  line-height: 1.2;
+}
+
+.leave-summary-lbl {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.leave-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.leave-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 4px;
+  width: fit-content;
+}
+
+.leave-tab {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  background: transparent;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.leave-tab.active {
+  background: #fff;
+  color: #6366f1;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.leave-tab:hover:not(.active) {
+  color: #0f1724;
+}
+
+.leave-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.leave-card {
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.leave-card:hover {
+  border-color: #cbd5e1;
+}
+
+.leave-card.approved {
+  border-left: 3px solid #0f9d58;
+}
+
+.leave-card.pending {
+  border-left: 3px solid #f59e0b;
+}
+
+.leave-card.rejected {
+  border-left: 3px solid #dc2626;
+}
+
+.leave-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.leave-card-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.leave-card-user img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.leave-card-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.leave-card-dept {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.leave-card-dates {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.leave-date-box {
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  padding: 8px 14px;
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.leave-date-lbl {
+  font-size: 11px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.leave-date-val {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f1724;
+  margin-top: 2px;
+}
+
+.leave-date-arrow {
+  color: #94a3b8;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.leave-days {
+  font-size: 20px;
+  font-weight: 700;
+  color: #6366f1;
+}
+
+.leave-card-reason {
+  font-size: 13px;
+  color: #475569;
+  font-style: italic;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 6px;
+}
+
+.leave-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leave-card-applied {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.leave-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.leave-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f1724;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.leave-balance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leave-balance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.leave-balance-type {
+  font-size: 13px;
+  color: #0f1724;
+}
+
+.leave-balance-days {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6366f1;
+}
+
+.leave-quick-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.leave-qs-item {
+  text-align: center;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.leave-qs-val {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.leave-qs-lbl {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .leave-grid {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .leave-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .leave-card-dates {
+    flex-wrap: wrap;
+  }
+  .leave-date-box {
+    min-width: 80px;
+  }
+}

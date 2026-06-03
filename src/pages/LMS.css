@@ -1,0 +1,22 @@
+.lms-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.lms-summary-card { text-align: center; padding: 20px; }
+.lms-summary-val { font-size: 26px; font-weight: 700; }
+.lms-summary-lbl { font-size: 13px; color: #64748b; margin-top: 4px; }
+.lms-categories { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+.lms-cat { padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 500; background: #f1f5f9; color: #64748b; transition: all 0.2s; }
+.lms-cat.active { background: #6366f1; color: #fff; }
+.lms-cat:hover:not(.active) { background: #e2e8f0; }
+.lms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.lms-course-card { padding: 20px; display: flex; flex-direction: column; }
+.lms-course-icon { font-size: 36px; margin-bottom: 10px; }
+.lms-course-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.lms-course-title { font-size: 15px; font-weight: 600; flex: 1; }
+.lms-course-level { font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 10px; flex-shrink: 0; }
+.lms-course-meta { display: flex; gap: 16px; font-size: 12px; color: #64748b; margin-bottom: 6px; }
+.lms-course-stats { display: flex; gap: 16px; font-size: 13px; color: #475569; margin-bottom: 8px; }
+.lms-progress { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+.lms-progress-bar-bg { flex: 1; height: 6px; background: #f1f5f9; border-radius: 3px; overflow: hidden; }
+.lms-progress-bar { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+.lms-progress-text { font-size: 12px; font-weight: 600; color: #64748b; }
+.lms-course-card .btn { margin-top: auto; }
+@media (max-width: 768px) { .lms-summary { grid-template-columns: repeat(2, 1fr); } }

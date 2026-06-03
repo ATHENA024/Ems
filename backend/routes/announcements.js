@@ -1,0 +1,44 @@
+const express = require('express');
+const router = express.Router();
+const Announcement = require('../models/Announcement');
+const { auth, adminOnly } = require('../middleware/auth');
+
+router.get('/', auth, async (req, res) => {
+  try {
+    const announcements = await Announcement.find().sort({ createdAt: -1 });
+    res.json(announcements);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.post('/', auth, adminOnly, async (req, res) => {
+  try {
+    const announcement = new Announcement(req.body);
+    await announcement.save();
+    res.status(201).json(announcement);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.put('/:id', auth, adminOnly, async (req, res) => {
+  try {
+    const announcement = await Announcement.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!announcement) return res.status(404).json({ message: 'Not found' });
+    res.json(announcement);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.delete('/:id', auth, adminOnly, async (req, res) => {
+  try {
+    await Announcement.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+module.exports = router;

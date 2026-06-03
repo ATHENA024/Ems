@@ -1,0 +1,30 @@
+.perf-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.perf-summary-card { text-align: center; padding: 20px; }
+.perf-summary-val { font-size: 26px; font-weight: 700; }
+.perf-summary-lbl { font-size: 13px; color: #64748b; margin-top: 4px; }
+.perf-section-title { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: #0f1724; }
+.perf-task-list { display: flex; flex-direction: column; gap: 12px; }
+.perf-task-card {
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+.perf-task-card:hover { border-color: #cbd5e1; }
+.perf-task-card.done { opacity: 0.7; background: #f8fafc; }
+.perf-task-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.perf-task-user { display: flex; align-items: center; gap: 10px; }
+.perf-task-user img { width: 28px; height: 28px; border-radius: 50%; }
+.perf-task-emp { font-weight: 600; font-size: 14px; }
+.perf-task-dept { font-size: 12px; color: #64748b; }
+.perf-task-priority { padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+.perf-task-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+.perf-task-desc { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+.perf-task-meta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #94a3b8; margin-bottom: 10px; }
+.perf-task-actions { display: flex; gap: 8px; }
+@media (max-width: 768px) { .perf-summary { grid-template-columns: repeat(2, 1fr); } }
