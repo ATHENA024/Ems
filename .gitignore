@@ -15,3 +15,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 .vs/
+*.zip
+backend/node_modules/
+backend/*.log
+backend/*.err
