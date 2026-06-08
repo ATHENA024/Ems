@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ems
+    env: node
+    buildCommand: cd backend && npm install && cd .. && npm install && npm run build
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        value: ems_jwt_secret_key_2026
+      - key: JWT_EXPIRES_IN
+        value: 7d

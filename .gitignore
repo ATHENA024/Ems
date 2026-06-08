@@ -19,3 +19,5 @@ yarn-error.log*
 backend/node_modules/
 backend/*.log
 backend/*.err
+backend/node_modules/.cache/
+node_modules/.cache/
